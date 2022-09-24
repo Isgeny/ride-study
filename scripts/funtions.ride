@@ -1,0 +1,32 @@
+{-# STDLIB_VERSION 6 #-}
+{-# CONTENT_TYPE DAPP #-}
+{-# SCRIPT_TYPE ACCOUNT #-}
+
+func withoutArguments() = {
+    true
+}
+
+func oneLine() = "oneLine"
+
+func returnUnit() = unit
+
+func oneArgument(int: Int) = int
+
+func twoArguments(int1: Int, int2: Int) = int1 + int2
+
+func multipleArguments(bool: Boolean, int: Int, string: String, bytes: ByteVector, list: List[Int], union: Int|String) = 8
+
+func call() = {
+    let a = oneArgument(4) # postfix
+    let b = 8.oneArgument() # prefix
+    let c = 1.twoArguments(2) 
+    a + b + c
+}
+
+func positive(value: Int) = {
+    if (value == 0)
+        then throw("can't be zero")
+        else if (value < 0)
+            then throw("cann't be negative")
+            else true
+}
