@@ -1,0 +1,18 @@
+{-# STDLIB_VERSION 6 #-}
+{-# CONTENT_TYPE DAPP #-}
+{-# SCRIPT_TYPE ACCOUNT #-}
+
+@Callable(i)
+func factorial(n: Int) = {
+    if (n == 1) then { ([], 1) }
+    else { 
+        strict result = invoke(this, "factorial", [n - 1], [])
+        ([], n * result.exactAs[Int])
+    }
+}
+
+@Callable(i)
+func factorialREADONLY(n: Int) = {
+    strict result = invoke(this, "factorial", [n], [])
+    throw(result.exactAs[Int].toString())
+}
